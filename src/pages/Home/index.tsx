@@ -5,7 +5,7 @@ import { ListProps } from "./@types";
 import { tv, type VariantProps  } from 'tailwind-variants';
  
 const th = tv({
-    base: 'flex items-center h-10 text-slate-100 text-left text-sm font-normal',
+    base: 'flex items-center h-10 text-slate-100 text-sm font-normal',
 });
 
 type ThProps = VariantProps<typeof th> & {
@@ -18,7 +18,7 @@ function Th({children, className}: ThProps) {
 }
 
 const td = tv({
-    base: 'flex items-center gap-2 h-10 text-slate-100 text-left text-sm font-normal',
+    base: 'flex items-center gap-2 h-10 text-slate-100 text-sm font-normal',
 });
 
 type TdProps = VariantProps<typeof td> & {
@@ -61,7 +61,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="container m-auto grid grid-cols-12 pt-10">
+        <div className="container m-auto grid grid-cols-12 gap-4 pt-10">
             <div className="col-span-8 bg-zinc-900 rounded-lg py-4 px-4">
                 <h1 className="text-base font-normal uppercase text-slate-100 mb-2">
                     Atendimentos
@@ -73,20 +73,20 @@ export default function Home() {
                             <Th className="col-span-3">Serviço</Th>
                             <Th className="col-span-2">Valor</Th>
                             <Th className="col-span-1">Data</Th>
-                            <Th className="col-span-2">Status</Th>
+                            <Th className="col-span-2 justify-end">Status</Th>
                         </tr>
                     </thead>
                     <tbody>
                             {exams && exams.map(doc => {
                                 return (
-                                    <tr className="grid grid-cols-12 px-2 border-b last:border-b-0 border-slate-100/50 hover:cursor-pointer hover:bg-red-900/50" key={doc.patient}>
+                                    <tr className="grid grid-cols-12 px-2 border-b last:border-b-0 border-slate-100/50 hover:cursor-pointer hover:bg-zinc-500/50" key={doc.patient}>
                                         <Td className="col-span-4">{doc.patient}</Td>
                                         <Td className="col-span-3">{doc.service}</Td>
                                         <Td className="col-span-2">R${doc.price}</Td>
                                         <Td className="col-span-1">{getDate(doc.created_at)}</Td>
                                         {doc.status 
-                                            ? <Td className="col-span-2"><div className="w-2 h-2 bg-emerald-500 rounded-full"></div> Pago </Td> 
-                                            : <Td className="col-span-2"><div className="w-2 h-2 bg-red-500 rounded-full"></div> Pendente </Td>
+                                            ? <Td className="col-span-2 justify-end"><span className="py-1 px-2 rounded-lg text-lime-300 bg-lime-400/30">Pago</span></Td> 
+                                            : <Td className="col-span-2 justify-end"><span className="py-1 px-2 rounded-lg text-orange-300 bg-orange-400/30">Pendente</span></Td>
                                         }
                                     </tr>
                                 )
@@ -95,8 +95,10 @@ export default function Home() {
                 </table>
             </div>
 
-            <div className="col-span-4">
-
+            <div className="col-span-4 bg-zinc-900 rounded-lg py-4 px-4">
+                <h1 className="text-base font-normal uppercase text-slate-100 mb-2">
+                    Ações
+                </h1>    
             </div>
         </div>
     )
