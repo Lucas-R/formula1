@@ -20,7 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@pages/*" : ["./src/pages/*"]
+      "@pages/*" : ["./src/pages/*"],
+      "@services/*" : ["./src/services/*"]
     }
   },
   "include": ["src"]
